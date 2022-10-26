@@ -11,6 +11,8 @@ class DefaultPokemonText extends StatelessWidget {
   final double? scale;
   final bool? bold;
 
+  //Reusable Text widget
+
   @override
   Widget build(BuildContext context) {
     return Text(

@@ -3,6 +3,7 @@ import 'package:pokedex/shared/register_factory/register_factory.dart';
 import 'shared/navigation/route_generator.dart';
 
 void main() {
+  //init our DI Factory
   RegisterFactory().setup();
   runApp(const MyApp());
 }

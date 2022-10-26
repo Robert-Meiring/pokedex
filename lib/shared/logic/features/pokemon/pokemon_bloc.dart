@@ -10,6 +10,7 @@ class PokemonBloc extends Bloc<PokemonEvents, PokemonStates> {
   PokemonBloc() : super(InitialPokemonState()) {
     on<GetAllPokemon>((event, emit) async {
       emit(FetchingAllPokemonBusy());
+      //Call API, assign json data to a Map, assign map data to our entities, return result
       try {
         List<PokemonSmall> _pokemonList = [];
         const _url = 'https://pokeapi.co/api/v2/pokemon/?limit=9000';
@@ -38,6 +39,8 @@ class PokemonBloc extends Bloc<PokemonEvents, PokemonStates> {
 
     on<GetIndividualPokemon>((event, emit) async {
       emit(FetchingIndividualPokemonBusy());
+      //url is passed through in the event, as each pokemon has a unique url to fetch data
+      //call api, assign json to map, assign our entities, return result
       try {
         List<Ability> _abilityList = [];
         List<Move> _movesList = [];

@@ -18,11 +18,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  //assign our Bloc variable via DI
   final PokemonBloc _bloc = sl.get<PokemonBloc>();
   List<PokemonSmall> _list = [];
 
   @override
   void initState() {
+    //Add event to bloc to fetch all our pokemon upon widget initial state
     _bloc.add(GetAllPokemon());
     super.initState();
   }
@@ -35,8 +37,10 @@ class _HomeScreenState extends State<HomeScreen> {
       body: BlocListener(
         bloc: _bloc,
         listener: (context, state) {
+          //listen for state when our business logic has completed and all our pokemon are returned
           if (state is FetchingAllPokemonSuccess) {
             _list = state.pokemon;
+            //setState used here, a better alternative would be to use BlocConsumer and keep the widget Stateless, but in this case setState will suffice
             setState(() {});
           }
         },
@@ -67,6 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Expanded(
               child: PokemonDefaultAnimator(
+                //list is empty = no data yet so display a loader || list is not empty = display our gridview
                 child: _list.isNotEmpty
                     ? PokemonGrid(list: _list)
                     : const Center(child: DefaultPokemonLoader()),

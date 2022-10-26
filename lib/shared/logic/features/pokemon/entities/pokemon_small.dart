@@ -1,3 +1,5 @@
+//Basic entity of our pokemon
+
 class PokemonSmall {
   final String name;
   final String url;

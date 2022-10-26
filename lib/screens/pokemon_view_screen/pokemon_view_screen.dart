@@ -21,12 +21,15 @@ class PokemonViewScreen extends StatefulWidget {
 }
 
 class _PokemonViewScreenState extends State<PokemonViewScreen> {
+  //assign our Bloc variable via DI
   final PokemonBloc _bloc = sl.get<PokemonBloc>();
+  //Init our entity variable as null, as there is still an API call to make to retrieve the data
   PokemonDetailed? _pokemon;
 
   @override
   void initState() {
     super.initState();
+    //Add event to bloc to fetch individual pokemon upon widget initial state
     _bloc.add(GetIndividualPokemon(url: widget.url));
   }
 
@@ -42,11 +45,16 @@ class _PokemonViewScreenState extends State<PokemonViewScreen> {
                 bloc: _bloc,
                 listener: (context, state) {
                   if (state is FetchingIndividualPokemonSuccess) {
+                    //listen for state when our business logic has completed and our pokemon is returned
+                    //assign the state result to our null variable
                     _pokemon = state.pokemon;
+                    //setState used here, a better alternative would be to use BlocConsumer and keep the widget Stateless, but in this case setState will suffice
                     setState(() {});
                   }
                 },
+                //wrap widget with our reusable animator class, used for smooth transitions when switching between widgets
                 child: PokemonDefaultAnimator(
+                    //check if we have received data yet, if so, display the relevant widget, else just a loading indicator
                     child: _pokemon != null
                         ? Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

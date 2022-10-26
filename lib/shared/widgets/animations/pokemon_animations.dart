@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 class PokemonDefaultAnimator extends StatelessWidget {
-  const PokemonDefaultAnimator({Key? key, required this.child}) : super(key: key);
+  const PokemonDefaultAnimator({Key? key, required this.child})
+      : super(key: key);
 
   final Widget child;
+
+  //Reusable animator widget
 
   @override
   Widget build(BuildContext context) {

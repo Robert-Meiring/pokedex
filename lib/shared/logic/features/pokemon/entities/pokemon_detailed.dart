@@ -1,3 +1,6 @@
+//More detailed entities 
+
+//POKEMON
 class PokemonDetailed {
   final String name;
   final int id;
@@ -22,6 +25,9 @@ class PokemonDetailed {
       required this.imageUrl,
       required this.species});
 }
+
+
+//STATS ETC
 
 class Ability {
   final String name;

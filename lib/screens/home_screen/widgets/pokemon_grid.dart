@@ -11,6 +11,9 @@ class PokemonGrid extends StatelessWidget {
 
   final ScrollController _controller = ScrollController();
 
+  //Basic GridviewBuilder displaying a networkimage alongside the name of our pokemon enitity contained in the list
+  //When an item is selected, navigate to the individual pokemon screen using named routes and pass relevant arguments with it
+
   @override
   Widget build(BuildContext context) {
     return Scrollbar(

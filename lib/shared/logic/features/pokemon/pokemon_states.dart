@@ -2,6 +2,8 @@ import 'package:equatable/equatable.dart';
 import 'package:pokedex/shared/logic/features/pokemon/entities/pokemon_detailed.dart';
 import 'package:pokedex/shared/logic/features/pokemon/entities/pokemon_small.dart';
 
+//Our States abstract class is used by our BLoC to communicate back to our widgets.
+
 abstract class PokemonStates extends Equatable {
   @override
   List<Object> get props => [];
